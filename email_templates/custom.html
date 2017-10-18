@@ -1,0 +1,34 @@
+<h1>Custom Email Update!</h1>
+<input type="text" id="new_field" placeholder="Body Title">
+<span id="add_new" class="btn btn-success">Add</span>
+<div id="custom_body">
+</div>
+
+<script>
+$("#add_new").click(function(){
+    newval = $("#new_field").val();
+    $("#custom_body").append('<div class="form-group">\
+    <label style="font-size:16pt" for="'+newval+'">'+newval+':</label><div class="pull-right"><span id="edit" onclick="edit(this)" class="btn btn-primary">Edit</span><span onclick="remove(this)" id="remove" class="btn btn-danger">Remove</span></div>\
+    <textarea class="form-control" rows="5" id="'+newval+'" name="body_topic"></textarea>\
+  </div>');
+  $("#new_field").val('');
+});
+function edit(thisObj){
+   label_object =  $(thisObj).parent().parent().find('label');
+   label_object.html('<input type="text" id="updatedval" value="'+label_object.text().replace(':', '')+'"> <span onclick="update(this)" class="btn btn-success">Update</span>');
+};
+function remove(thisObj){
+    label_object =  $(thisObj).parent().parent();
+    $( label_object ).fadeOut( "slow", function() {
+    // Animation complete.
+    this.remove();
+  });
+};
+function update(obj){
+    updated_val = $(obj).parent().find('input').val();
+    parent_node = $(obj).parent();
+    parent_node.html(updated_val+":");
+    parent_node.prop( "for", updated_val);
+    parent_node.parent().find("textarea").prop( "id", updated_val);
+};
+</script>
