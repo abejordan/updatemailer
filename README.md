@@ -2,7 +2,7 @@
 Simple email application that sends updates to clients
 Nothing too fancy, but serves it's purpose.
 
-This main purpose of this application is too have a consistent way to email clients updates about daily events.
+The main purpose of this application is to create a consistent way to email clients updates about daily events.
 
 # Database Setup
 
